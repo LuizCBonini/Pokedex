@@ -4,7 +4,10 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+:root {
+  --font-primal: 'Laila', sans-serif;
 }
 
 html {
@@ -15,7 +18,7 @@ html {
 }
 
 body {
-  background-color: #333;
+  background-color: #242938;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,9 +41,23 @@ code {
   animation: animeLeft .8s linear forwards;
 }
 
+.pokeball {
+  position: absolute;
+  height: 50vh;
+  z-index: -1;
+  opacity: 0.1;
+  animation: rotatePokeball 5s linear infinite;
+}
+
 @keyframes animeLeft {
   to {
     opacity: initial;
     transform: translateX(0);
+  }
+}
+
+@keyframes rotatePokeball {
+  to {
+    transform: rotate(360deg);
   }
 }

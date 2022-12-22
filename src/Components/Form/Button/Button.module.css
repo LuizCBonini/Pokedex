@@ -1,0 +1,25 @@
+.button {
+    background-color: #FF1C1C;
+    border: none;
+    font-family: var(--font-primal);
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: .5rem 2rem;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 1rem 0 1rem;
+    transition: .3s;
+    margin: 0 1rem;
+}
+
+.button:hover, 
+.button:focus {
+    background-color: #b90000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.26);
+    transition: .3s;
+}
+
+.button:disabled {
+    background-color: #ff7070;
+    cursor: no-drop;
+}

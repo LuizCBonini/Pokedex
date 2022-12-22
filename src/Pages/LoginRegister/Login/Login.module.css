@@ -1,0 +1,19 @@
+.Login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.logo {
+    width: fit-content;
+}
+
+.link {
+    margin-top: 2rem;
+}
+
+.buttons {
+    display: inline;
+}

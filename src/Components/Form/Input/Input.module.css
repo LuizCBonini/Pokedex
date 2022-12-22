@@ -1,0 +1,36 @@
+.inputLabel {
+    font-size: 2rem;
+    display: block;
+}
+
+.inputInput {
+    background-color: rgb(32, 32, 32);
+    color: #fff;
+    height: 3rem;
+    border: none;
+    border-radius: .5rem;
+    padding: 0 0 0 4rem;
+}
+
+.inputInput::placeholder {
+    color:rgb(185, 185, 185);
+}
+
+.span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.icon {
+    display: inline;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    left: 1rem;
+
+}
+
