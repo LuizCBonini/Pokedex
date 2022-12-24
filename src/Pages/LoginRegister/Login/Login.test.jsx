@@ -9,11 +9,11 @@ describe('Comportamento do Login', () => {
                 <Login/>
             </BrowserRouter>
         )
-        const inputName = screen.getByLabelText('Nome:');
-        const inputPassword = screen.getByLabelText('Senha:')
+        const inputEmail = screen.getByLabelText('E-mail:');
+        const inputPassword = screen.getByLabelText('Password:')
         const button = screen.getByText('Login')
 
-        expect(inputName).toBeInTheDocument()
+        expect(inputEmail).toBeInTheDocument()
         expect(inputPassword).toBeInTheDocument()
         expect(button).toBeDisabled()
 
@@ -25,20 +25,20 @@ describe('Comportamento do Login', () => {
                 <Login/>
             </BrowserRouter>
         )
-        const inputName = screen.getByLabelText('Nome:');
-        const inputPassword = screen.getByLabelText('Senha:')
+        const inputEmail = screen.getByLabelText('E-mail:');
+        const inputPassword = screen.getByLabelText('Password:')
         const button = screen.getByText('Login')
 
-        expect(inputName).toBeInTheDocument()
+        expect(inputEmail).toBeInTheDocument()
         expect(inputPassword).toBeInTheDocument()
-        fireEvent.change(inputName, {
+        fireEvent.change(inputEmail, {
             target: {
-                value: 'Ash Ketchum'
+                value: 'Ash@Ketchum.com'
             }
         })
         fireEvent.change(inputPassword, {
             target: {
-                value: '123'
+                value: 'password123'
             }
         })
         expect(button).not.toBeDisabled()

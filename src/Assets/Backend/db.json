@@ -1,3 +1,51 @@
 {
-    "users": []
+  "users": [
+    {
+      "email": "lala@lala.com",
+      "password": "$2a$10$qh2v8rL5ZeAdzrH16tFMUu8VLBypN5ANR/IGfVlvQp8Vw9s9PydGC",
+      "nome": "Ash Ketchum",
+      "id": 1
+    },
+    {
+      "email": "oi@oi.com",
+      "password": "$2a$10$lYZEuwOqpR94KDfIsctz1.7yZZgbDHk4NGxGviuMwcVUwBze3nau.",
+      "nome": "Red",
+      "id": 2
+    },
+    {
+      "email": "ola@oi.com",
+      "password": "$2a$10$igS8r3PXQj85Y7PrJKJ0LuMIdrAX93vQuLTsJ9L5kxzwjPXYe2QvO",
+      "nome": "Green",
+      "id": 3
+    },
+    {
+      "email": "hot@dog.com",
+      "password": "$2a$10$3..UFePI9f8WD.cmB1GyFuAmqfL9U6IytlMm43sw/UiWiwoJVHQDy",
+      "nome": "Pixie",
+      "id": 4
+    },
+    {
+      "email": "teste@oi.com",
+      "password": "$2a$10$RB27BWNXb2D.cTdJcOR7ge6rZxcJ2.Ouc00kNMKnJDXhx5Tg48XJ.",
+      "nome": "Blue",
+      "Gotcha": [
+        "Pikachu",
+        "Snorlax",
+        "Luxray"
+      ],
+      "id": 5
+    },
+    {
+      "email": "12@34",
+      "password": "$2a$10$PDOV5MX5BR4XijZe7X2nVOOxL70ZJrVWUxhDqR5jZaUAZOhA2Meca",
+      "nome": "Jão",
+      "id": 6
+    },
+    {
+      "email": "123@4.com",
+      "password": "$2a$10$drJz44a3yo.PMF5qJ9b9rO6JnnAp94MfyLNRY0crvUXw4890rIw.G",
+      "nome": "Pixie",
+      "id": 7
+    }
+  ]
 }

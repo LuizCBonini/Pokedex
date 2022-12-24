@@ -1,0 +1,25 @@
+.loadingSection {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.726);
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.loading {
+    height: 20%;
+    animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+    to {
+        transform: rotate(360deg);
+    }
+}

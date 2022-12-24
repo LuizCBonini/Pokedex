@@ -1,6 +1,7 @@
 .inputLabel {
     font-size: 2rem;
     display: block;
+    margin-top: 3rem;
 }
 
 .inputInput {
@@ -22,7 +23,6 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-bottom: 3rem;
 }
 
 .icon {
@@ -32,5 +32,10 @@
     position: absolute;
     left: 1rem;
 
+}
+
+.error {
+    color: red;
+    display: inline;
 }
 
