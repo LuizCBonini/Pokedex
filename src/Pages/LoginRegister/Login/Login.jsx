@@ -12,7 +12,7 @@ import Loading from '../../../Components/Loading/Loading'
 
 // styles
 import styles from './Login.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { GET_USER } from '../../../api'
 import useForm from '../../../Hooks/useForm'
 
@@ -24,6 +24,8 @@ const Login = () => {
   
   const validateEmail = useForm('email')
   const validatePassword = useForm('senha')
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     if(
@@ -47,10 +49,10 @@ const Login = () => {
       if(!response.length > 0) {
         window.localStorage.setItem('token', response.accessToken)
         window.localStorage.setItem('nome', response.user.nome)
+        navigate('/')
       } else {
         setErro(response)
       }
-      
       
     } catch (err) {
       console.log('Ooops, ' + err)

@@ -15,6 +15,11 @@ const types = {
         regex: /^\d+$/
         ,
         message: `Apenas utilize números.`,
+    },
+    name: {
+        regex: /^(?=.*[A-Za-z0-9]).{4,20}$/
+        ,
+        message: 'O nome deve conter de 4 a 20 caracteres.'
     }
 }
 

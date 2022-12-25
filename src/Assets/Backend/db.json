@@ -46,6 +46,24 @@
       "password": "$2a$10$drJz44a3yo.PMF5qJ9b9rO6JnnAp94MfyLNRY0crvUXw4890rIw.G",
       "nome": "Pixie",
       "id": 7
+    },
+    {
+      "email": "Gr@inch.com",
+      "password": "$2a$10$H4LGT6FhekOZ2t6zScpbw.JntxNWhmA/mX0FeUbI8hpc1YFB.M/Ue",
+      "nome": "Grinch",
+      "id": 8
+    },
+    {
+      "email": "asd@afds.com",
+      "password": "$2a$10$761ww7sq7.sQx8lNiPDotOiG8KoET6IoZigOvF8SWf5FpZwy45ODu",
+      "nome": "asdasda",
+      "id": 9
+    },
+    {
+      "email": "t@t.com",
+      "password": "$2a$10$N/oUZIe/BnifCJiu8dLrY.LgsNnx.9Gn1RS8OMgNxJtuAtLnTu3K6",
+      "nome": "Saturn",
+      "id": 10
     }
   ]
 }
