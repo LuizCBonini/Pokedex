@@ -1,0 +1,46 @@
+.header {
+    background: transparent;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gotchas {
+    color: #000;
+    width: 7rem;
+    height: 7rem;
+    background-color: #fff;
+    border: 5px solid #000;
+    border-radius: 50%;
+    font-family: var(--font-Nunito);
+    font-size: 1.5rem;
+    font-weight: 800;
+    position: absolute;
+    top: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.gotchas:hover,
+.gotchas:focus {
+    transform: scale(1.02);
+    transition: .2s;
+}
+
+.pokeicon {
+    width: 80%;
+}
+
+@media (max-width: 425px) {
+    .gotchas {
+        width: 4rem;
+        height: 4rem;
+        border: 2px solid #000;
+    }
+}
