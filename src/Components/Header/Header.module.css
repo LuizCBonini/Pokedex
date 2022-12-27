@@ -45,6 +45,10 @@
     font-size: 1.5rem;
 }
 
+.display {
+    display: none;
+}
+
 @media (max-width: 425px) {
     .gotchas {
         width: 4rem;

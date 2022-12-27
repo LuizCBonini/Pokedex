@@ -4,6 +4,8 @@ import Home from './Pages/Home/Home'
 import LoginRoute from './Pages/LoginRegister/LoginRoute';
 
 function App() {
+  
+
   return (
     <BrowserRouter>
       <Header/>
