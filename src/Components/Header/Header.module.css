@@ -37,6 +37,14 @@
     width: 80%;
 }
 
+.user {
+    color: #fff;
+    position: absolute;
+    right: 3%;
+    top: 10%;
+    font-size: 1.5rem;
+}
+
 @media (max-width: 425px) {
     .gotchas {
         width: 4rem;
