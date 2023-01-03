@@ -5,7 +5,7 @@ import styles from './Home.module.css'
 
 const Home = () => {
   return (
-    <section className={styles.section}>
+    <section className={`mainContainer ${styles.section}`}>
       <Card/>
     </section>
   )
