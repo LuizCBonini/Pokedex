@@ -22,7 +22,8 @@ import psychic from '../../Assets/Imgs/Psychic.png'
 import rock from '../../Assets/Imgs/Rock.png'
 import water from '../../Assets/Imgs/Water.png'
 
-const Card = () => {
+
+const Card = (props) => {
 
   const [pokemonImg, setPokemonImg] = useState()
   const [pokemonSprite, setPokemonSprite] = useState()
@@ -31,23 +32,29 @@ const Card = () => {
   const [secondType, setSecondType] = useState()
   const [pokemonName, setPokemonName] = useState()
   const [genera, setGenera] = useState()
+  const pokeName = props.pokemonName
 
   
   
 
   useEffect(() => {
     async function pokemon() {
-      const response = await GET_POKEMON('rowlet')
-      console.log(response)
-      setPokemonImg(response.sprites.other['official-artwork'].front_default)
-      setPokemonSprite(response.sprites.front_default)
-      setPokemonType(response.types[0].type.name);
-      setSecondType(response.types[1]?.type.name);
-      setPokemonName(response.name)
+      try {
+        const response = await GET_POKEMON(pokeName)
+        // console.log(response)
+        setPokemonImg(response.sprites.other['official-artwork'].front_default)
+        setPokemonSprite(response.sprites.front_default)
+        setPokemonType(response.types[0].type.name);
+        setSecondType(response.types[1]?.type.name);
+        setPokemonName(response.name)
+      } catch (err) {
+        console.log('Ooops, ' + err)
+      }
     }
+
     async function specie() {
-      const response = await GET_SPECIE('rowlet')
-      console.log(response)
+      const response = await GET_SPECIE(pokeName)
+      // console.log(response)
       setPokemonColor(response.color.name)
       setGenera(response.genera[7].genus)
     }

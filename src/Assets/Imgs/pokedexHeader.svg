@@ -3,11 +3,8 @@
 <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 2000 170" style="enable-background:new 0 0 2000 170;" xml:space="preserve">
 <style type="text/css">
-	.st0{display:none;fill:#E30613;stroke:#000000;stroke-width:7;stroke-miterlimit:10;}
-	.st1{fill:#E62E2C;}
+	.st1{fill:#ff4040;}
 </style>
-<path class="st0" d="M0,168.1h170.63c35.63,0.04,66.85-14.69,63.18-48.08l0,0c0,0-9.33-46.69,65.14-46.69h1400.47
-	c57.7,0,59.9,24.14,59.9,56.17l0,0c0,32.03,31.88,38.6,63.91,38.6H2000L2000,0H0L0,168.1z"/>
 <g>
 	<path class="st1" d="M1826.2,147.36c-15.71,0-28.5-12.79-28.5-28.5v-11.71c0-11.86-9.64-21.5-21.5-21.5H226.12
 		c-11.86,0-21.5,9.64-21.5,21.5v11.71c0,15.71-12.79,28.5-28.5,28.5H-3.5V-3.5h2007v150.86H1826.2z"/>

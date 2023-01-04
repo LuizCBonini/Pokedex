@@ -1,14 +1,20 @@
 import React from 'react'
-import Card from '../../Components/Card/Card'
-
-import styles from './Home.module.css'
+import styled from 'styled-components'
+import PokemonGrid from '../../Components/PokemonGrid/PokemonGrid'
 
 const Home = () => {
   return (
-    <section className={`mainContainer ${styles.section}`}>
-      <Card/>
-    </section>
+    <HomeSection className={`mainContainer`}>
+      <PokemonGrid/>
+    </HomeSection>
   )
 }
 
 export default Home
+
+
+// =============== Styles ===============
+
+const HomeSection = styled.section`
+  height: fit-content;
+`;
