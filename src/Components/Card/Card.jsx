@@ -31,6 +31,9 @@ const Card = (props) => {
   const [pokemonType, setPokemonType] = useState()
   const [secondType, setSecondType] = useState()
   const [pokemonName, setPokemonName] = useState()
+  const [pokeStyleName, setPokeStyleName] = useState()
+  const [pokeNumber, setPokeNumber] = useState()
+  console.log(pokeNumber)
   const [genera, setGenera] = useState()
   const pokeName = props.pokemonName
 
@@ -41,28 +44,42 @@ const Card = (props) => {
     async function pokemon() {
       try {
         const response = await GET_POKEMON(pokeName)
-        // console.log(response)
-        setPokemonImg(response.sprites.other['official-artwork'].front_default)
+        console.log(response)
+        setPokemonImg(
+          (response.sprites.other['official-artwork'].front_default) 
+          ? response.sprites.other['official-artwork'].front_default
+          : response.sprites.front_default
+        )
         setPokemonSprite(response.sprites.front_default)
         setPokemonType(response.types[0].type.name);
         setSecondType(response.types[1]?.type.name);
-        setPokemonName(response.name)
+        setPokemonName(response.species.name)
+        setPokeStyleName((response.name !== response.species.name) ? response.name : '')
       } catch (err) {
         console.log('Ooops, ' + err)
       }
     }
+    
+    pokemon()
+    
+    
+  }, [pokeName])
+
+  useEffect(() => {
 
     async function specie() {
-      const response = await GET_SPECIE(pokeName)
-      // console.log(response)
-      setPokemonColor(response.color.name)
-      setGenera(response.genera[7].genus)
+      try {
+        const response = await GET_SPECIE(pokemonName)
+        console.log(response)
+        setPokeNumber(response.pokedex_numbers[0].entry_number)
+        setPokemonColor(response?.color.name)
+        setGenera(response.genera[7] ? response.genera[7].genus : response.genera[4].genus)
+      } catch (err) {
+        console.log('Oops, ' + err)
+      }
     }
-    pokemon()
     specie()
-    
-    
-  }, [])
+  }, [pokemonName])
 
   const type = 
   pokemonType === 'bug' ? bug : 
@@ -86,7 +103,7 @@ const Card = (props) => {
   null
   
   return (
-    <CardContainer color={pokemonColor}>
+    <CardContainer color={pokemonColor === 'white' ? 'red' : pokemonColor}>
       <PokeImg src={pokemonImg} alt="" />
       <Separador color={pokemonType}>
         <TypeIcon color={pokemonType}>
@@ -97,12 +114,14 @@ const Card = (props) => {
       </Separador>
       <CardContent color={pokemonType}>
         <h1>{pokemonName}</h1>
-        <p>{genera}</p>
+        <PokeGenera color={pokemonType}>{genera}</PokeGenera>
+        <StyleName>{pokeStyleName}</StyleName>
         <TypesDiv color={pokemonType}>
           <p>{pokemonType}</p>
           <img src={pokemonSprite} alt="" />
           <p>{secondType}</p>
         </TypesDiv>
+        <PokeNumber color={pokemonType}>#{pokeNumber}</PokeNumber>
       </CardContent>
     </CardContainer>
   )
@@ -226,14 +245,20 @@ const CardContent = styled.div`
     text-transform: capitalize;
     font-size: 3rem;
   }
-
-  p {
-    color: ${color};
-    font-size: 1.2rem;
-    letter-spacing: .3rem;
-    font-weight: 600;
-  }
 `;
+
+ const PokeGenera = styled.p`
+  color: ${color};
+  font-size: 1.2rem;
+  letter-spacing: .3rem;
+  font-weight: 600;
+ `;
+ 
+  const StyleName = styled.p`
+    text-transform: capitalize;
+    font-size: 1rem;
+    color: #333;
+  `;
 
 const TypesDiv = styled.div`
   display: flex;
@@ -242,7 +267,7 @@ const TypesDiv = styled.div`
   height: 2rem;
   padding: 0 .5rem 0 .5rem;
   border-radius: 2rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
   
   img {
     width: 6rem;
@@ -252,4 +277,11 @@ const TypesDiv = styled.div`
     color: #fff;
     text-transform: capitalize;
   }
+`;
+
+const PokeNumber = styled.p`
+  margin-top: 1rem;
+  margin-left: 15rem;
+  font-size: 1rem;
+  color: ${color}
 `;
