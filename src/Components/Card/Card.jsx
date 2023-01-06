@@ -30,11 +30,11 @@ const Card = (props) => {
   const [pokemonColor, setPokemonColor] = useState()
   const [pokemonType, setPokemonType] = useState()
   const [secondType, setSecondType] = useState()
-  const [pokemonName, setPokemonName] = useState()
+  const [pokeSpecieName, setPokeSpecieName] = useState()
   const [pokeStyleName, setPokeStyleName] = useState()
   const [pokeNumber, setPokeNumber] = useState()
-  console.log(pokeNumber)
   const [genera, setGenera] = useState()
+  const [pokeError, setPokeError] = useState(false)
   const pokeName = props.pokemonName
 
   
@@ -44,7 +44,7 @@ const Card = (props) => {
     async function pokemon() {
       try {
         const response = await GET_POKEMON(pokeName)
-        console.log(response)
+        // console.log(response)
         setPokemonImg(
           (response.sprites.other['official-artwork'].front_default) 
           ? response.sprites.other['official-artwork'].front_default
@@ -53,10 +53,12 @@ const Card = (props) => {
         setPokemonSprite(response.sprites.front_default)
         setPokemonType(response.types[0].type.name);
         setSecondType(response.types[1]?.type.name);
-        setPokemonName(response.species.name)
+        setPokeSpecieName(response.species.name)
         setPokeStyleName((response.name !== response.species.name) ? response.name : '')
+        setPokeError(false)
       } catch (err) {
         console.log('Ooops, ' + err)
+        setPokeError(true)
       }
     }
     
@@ -69,8 +71,8 @@ const Card = (props) => {
 
     async function specie() {
       try {
-        const response = await GET_SPECIE(pokemonName)
-        console.log(response)
+        const response = await GET_SPECIE(pokeSpecieName)
+        // console.log(response)
         setPokeNumber(response.pokedex_numbers[0].entry_number)
         setPokemonColor(response?.color.name)
         setGenera(response.genera[7] ? response.genera[7].genus : response.genera[4].genus)
@@ -78,8 +80,8 @@ const Card = (props) => {
         console.log('Oops, ' + err)
       }
     }
-    specie()
-  }, [pokemonName])
+    if(pokeSpecieName !== undefined) {specie()}
+  }, [pokeSpecieName])
 
   const type = 
   pokemonType === 'bug' ? bug : 
@@ -103,27 +105,31 @@ const Card = (props) => {
   null
   
   return (
-    <CardContainer color={pokemonColor === 'white' ? 'red' : pokemonColor}>
-      <PokeImg src={pokemonImg} alt="" />
-      <Separador color={pokemonType}>
-        <TypeIcon color={pokemonType}>
-          
-          <img src={type} alt="" />
-          
-        </TypeIcon>
-      </Separador>
-      <CardContent color={pokemonType}>
-        <h1>{pokemonName}</h1>
-        <PokeGenera color={pokemonType}>{genera}</PokeGenera>
-        <StyleName>{pokeStyleName}</StyleName>
-        <TypesDiv color={pokemonType}>
-          <p>{pokemonType}</p>
-          <img src={pokemonSprite} alt="" />
-          <p>{secondType}</p>
-        </TypesDiv>
-        <PokeNumber color={pokemonType}>#{pokeNumber}</PokeNumber>
-      </CardContent>
-    </CardContainer>
+    <>
+      {pokeError ? <SearchNotFound>Pokémon não registrado.</SearchNotFound> :
+      <CardContainer color={pokemonColor === 'white' ? 'red' : pokemonColor}>
+        <PokeImg src={pokemonImg} alt="" />
+        <Separador color={pokemonType}>
+          <TypeIcon color={pokemonType}>
+            
+            <img src={type} alt="" />
+            
+          </TypeIcon>
+        </Separador>
+        <CardContent color={pokemonType}>
+          <h1>{pokeSpecieName}</h1>
+          <PokeGenera color={pokemonType}>{genera}</PokeGenera>
+          <StyleName>{pokeStyleName}</StyleName>
+          <TypesDiv color={pokemonType}>
+            <p>{pokemonType}</p>
+            <img src={pokemonSprite} alt="" />
+            <p>{secondType}</p>
+          </TypesDiv>
+          <PokeNumber color={pokemonType}>#{pokeNumber}</PokeNumber>
+        </CardContent>
+      </CardContainer>
+      }
+    </>
   )
 }
 
@@ -284,4 +290,9 @@ const PokeNumber = styled.p`
   margin-left: 15rem;
   font-size: 1rem;
   color: ${color}
+`;
+
+const SearchNotFound = styled.p`
+  color: #a7a700;
+  font-size: 2rem;
 `;

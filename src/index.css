@@ -70,5 +70,9 @@ code {
 }
 
 .mainContainer {
-  padding: 15rem 10rem 0 10rem;
+  padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

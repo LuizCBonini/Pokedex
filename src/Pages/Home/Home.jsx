@@ -1,15 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import PokemonGrid from '../../Components/PokemonGrid/PokemonGrid'
 import Input from '../../Components/Form/Input/Input'
 
 // imgs:
 import searchIcon from '../../Assets/Imgs/Search.svg'
+import Card from '../../Components/Card/Card'
+import useDebounce from '../../Hooks/useDebouce'
 
 const Home = () => {
-  const [search, setSearch] = useState()
+  const [search, setSearch] = useState('')
+  const [searchDebouced, setSearchDebounced] = useState()
+  const deboucedChange = useDebounce(setSearchDebounced, 500)
+
+  function handleChange(event) {
+    const filterSearch = event.target.value.toLowerCase()
+    setSearch(event.target.value)
+    deboucedChange(filterSearch)
+  }
   return (
     <>
+      <HomeSection className={`mainContainer`}>
         <SearchContent>
           <Input
             id='searchPoke'
@@ -18,11 +29,11 @@ const Home = () => {
             placeholder=''
             icon={searchIcon}
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={handleChange}
+            search
           />
         </SearchContent>
-      <HomeSection className={`mainContainer`}>
-        <PokemonGrid/>
+        {searchDebouced ? <Card pokemonName={searchDebouced}/> : <PokemonGrid/>}
       </HomeSection>
     </>
   )
@@ -41,5 +52,5 @@ const SearchContent = styled.div`
   max-width: fit-content;
   display: flex;
   margin: 0 auto;
-  margin-top: 10rem;
+  margin-bottom: 5rem;
 `;

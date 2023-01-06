@@ -23,7 +23,6 @@ const PokemonGrid = () => {
             try {
                 const response = await POKE_PAGINATION(8, offSet)
                 setPokeList(response.results)
-                console.log(response)
             } catch (err) {
                 console.log('Ooop, ' + err)
             } finally {
@@ -75,6 +74,7 @@ const PokeGrid = styled.div `
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     row-gap: 4rem;
+    column-gap: 5rem;
     justify-items: center;
     align-items: center;
     position: relative;
