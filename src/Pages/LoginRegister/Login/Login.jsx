@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 // images
 import Logo from '../../../Assets/Imgs/Pokédexlogo.png'
@@ -9,12 +10,11 @@ import Password from '../../../Assets/Imgs/password.svg'
 import Input from '../../../Components/Form/Input/Input'
 import Button from '../../../Components/Form/Button/Button'
 import Loading from '../../../Components/Loading/Loading'
-
-// styles
-import styles from './Login.module.css'
-import { Link, useNavigate } from 'react-router-dom'
 import { GET_USER } from '../../../api'
+
+// hooks
 import useForm from '../../../Hooks/useForm'
+import styled from 'styled-components'
 
 const Login = () => {
   const [erro, setErro] = useState('')
@@ -66,8 +66,8 @@ const Login = () => {
       {loading && <Loading/>}
       <section className='section'>
         {erro && <div className="error" role={'alert'}>{erro}</div>}
-          <form className={styles.Login} onSubmit={handleSubmit}>
-            <img src={Logo} alt="" className={styles.logo}/>
+          <LoginForm onSubmit={handleSubmit}>
+            <LogoPokedex src={Logo} alt="Pokédex logo"/>
             <Input
                 id='email'
                 label='E-mail:'
@@ -84,12 +84,12 @@ const Login = () => {
                 icon={Password}
                 {...validatePassword}
             />
-            <div className={styles.buttons}>
+            <ButtonsContainer>
               <Button isDisabled={disabled}>Login</Button>
-              <Link to={'registrar'} className={styles.link}><Button>Cadastre-se</Button></Link>
-            </div>
+              <Link to={'registrar'} className={'link'}><Button>Cadastre-se</Button></Link>
+            </ButtonsContainer>
             
-          </form>
+          </LoginForm>
       </section>
     </>
     
@@ -97,3 +97,20 @@ const Login = () => {
 }
 
 export default Login
+
+const LoginForm = styled.form`
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const LogoPokedex = styled.img`
+  width: fit-content;
+`;
+
+const ButtonsContainer = styled.div`
+  display: inline;
+`;

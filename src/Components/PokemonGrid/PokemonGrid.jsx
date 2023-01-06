@@ -13,7 +13,8 @@ const PokemonGrid = () => {
 
     const [pokeList, setPokeList] = useState();
     const [loading, setLoading] = useState(false);
-    const [offSet, setOffSet] = useState(1140);
+    const [offSet, setOffSet] = useState(0);
+    const [pagina, setPagina] = useState(1);
 
     
     useEffect(() => {
@@ -36,12 +37,27 @@ const PokemonGrid = () => {
     <>
         {loading && <Loading/>}
         <PokeGrid>
-            <SetaEsquerda onClick={() => setOffSet((offSet === 0) ? 0 : offSet-8)} src={setaEsquerda} alt="" />
+            <SetaEsquerda 
+                onClick={() => {
+                    setOffSet((offSet === 0) ? 0 : offSet-8)
+                    setPagina((pagina === 1) ? 1 : pagina-1)
+                }
+                } 
+                src={setaEsquerda} 
+                alt="" />
             {
                 pokeList?.map((poke) => <Card key={poke.name} pokemonName={poke.name}/>)
             }
-            <SetaDireita src={setaDireita} onClick={() => setOffSet((offSet < 1148 ) ? offSet+8 : 1148)} alt="" />
+            <SetaDireita 
+                src={setaDireita} 
+                onClick={() => {
+                        setOffSet((offSet < 1148 ) ? offSet+8 : 1148)
+                        setPagina((pagina < 144) ? pagina+1 : 145)
+                    }
+                } 
+                alt="" />
         </PokeGrid>
+        <Paginas>Pag: {pagina}</Paginas>
     </>
   )
 }
@@ -87,4 +103,10 @@ const SetaEsquerda = styled.img `
         transform: scale(1.2);
         transition: .2s;
     }
+`;
+
+const Paginas = styled.p`
+    color: #ff4040;
+    font-size: 2rem;
+    text-align: end;
 `;

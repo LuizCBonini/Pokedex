@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 
@@ -16,9 +17,6 @@ import { CREATE_USER } from '../../../api'
 // Hooks
 import useForm from '../../../Hooks/useForm'
 
-// styles
-import styles from '../Login/Login.module.css'
-import style from './Register.module.css'
 
 const Login = () => {
   const [erro, setError] = useState('')
@@ -70,8 +68,8 @@ const Login = () => {
       {loading && <Loading/>}
       <section>
             {erro && <div className="error" role={'alert'}>{erro}</div>}
-        <form className={styles.Login} onSubmit={handleSubmit}>
-            <img src={Logo} alt="" className={styles.logo}/>
+        <LoginForm onSubmit={handleSubmit}>
+            <LogoPokedex src={Logo} alt="Pokédex logo"/>
             <Input
                 id='nome'
                 label='Name:'
@@ -96,14 +94,37 @@ const Login = () => {
                 icon={Password}
                 {...validatePassword}
             />
-            <div className={styles.button}>
+            <ButtonsContainer>
               <Button isDisabled={disabled}>Sign Up</Button>
-              <Link to={'/login'} className={style.linkLogin}>Go to Login</Link>
-            </div>
-        </form>
+              <Link to={'/login'} className={'linkLogin'}>Go to Login</Link>
+            </ButtonsContainer>
+        </LoginForm>
       </section>
     </>
   )
 }
 
 export default Login
+
+// ============== styled ===============
+
+const LoginForm = styled.form`
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const LogoPokedex = styled.img`
+  width: fit-content;
+`;
+
+const ButtonsContainer = styled.div`
+  display: inline;
+  .linkLogin {
+    color: #fff;
+    text-decoration: none;
+  }
+`;
